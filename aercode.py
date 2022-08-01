@@ -63,10 +63,12 @@ def df_md(key, m_path, mod, dt):
         df = xr.open_mfdataset(m_df)
         shplat = key['lat'].loc[t]
         shplon = key['lon'].loc[t]
-        data = df.interp(lat=shplat, lon=shplon)
-        data = data.reset_coords(('lat','lon'))
+        data = df.interp(lat=shplat, lon=shplon, lat_v=shplat, lon_u=shplon)
+        data = data.reset_coords(('lat','lon','lat_v','lon_u'))
         data['lat'] = data.lat.expand_dims(dim='time')
         data['lon'] = data.lon.expand_dims(dim='time')
+        data['lat_v'] = data.lat_v.expand_dims(dim='time')
+        data['lon_u'] = data.lon_u.expand_dims(dim='time')        
         if t == key.index[0]:
             dftrack = data
         else:
