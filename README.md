@@ -1,4 +1,4 @@
-# aercode
+# Aurora Australis Voyages
 Repository for python scripts/functions/notebooks used in ACCESS model data handling and analysis
 
 The aercode.py python script contains all the functions neccesary for extracting model data along the path of a ship and preparing it for analysis.
