@@ -408,7 +408,7 @@ def nt_calcs(aer):
    #else: # input variable is not a cube
     nd_gt_10_out = nd_gt_10
     
-    N10 = nd_gt_10_out + nd[1:,:,:].sum(axis=0) # add the larger modes
+    # N10 = nd_gt_10_out + nd[1:,:,:].sum(axis=0) # add the larger modes
     # add it into the aerosol array 
     N10 = xr.DataArray(N10,coords=[aer.time,aer.z1_hybrid_height],#,aer.lat,aer.lon],
                        dims=['time','z1_hybrid_height'],name='N10')#,'lat','lon'
@@ -442,7 +442,7 @@ def nt_calcs(aer):
    #else: # input variable is not a cube
     nd_gt_3_out = nd_gt_3
     
-    N3 = nd_gt_3_out + nd[1:,:,:].sum(axis=0) # add the larger modes
+    # N3 = nd_gt_3_out + nd[1:,:,:].sum(axis=0) # add the larger modes
     # add it into the aerosol array 
     N3 = xr.DataArray(N3,coords=[aer.time,aer.z1_hybrid_height],#,aer.lat,aer.lon],
                        dims=['time','z1_hybrid_height'],name='N3')#,'lat','lon'
@@ -506,7 +506,7 @@ def ccn_calcs(aer):
    #else: # input variable is not a cube
     nd_gt_40_out = nd_gt_40
     
-    CCN40 = nd_gt_40_out + nd[1:,:,:].sum(axis=0) # add the larger modes
+    # CCN40 = nd_gt_40_out + nd[1:,:,:].sum(axis=0) # add the larger modes
     # add it into the aerosol array 
     CCN40 = xr.DataArray(CCN40,coords=[aer.time,aer.z1_hybrid_height],#,aer.lat,aer.lon],
                        dims=['time','z1_hybrid_height'],name='CCN40')#,'lat','lon'
@@ -530,7 +530,7 @@ def ccn_calcs(aer):
    #else: # input variable is not a cube
     nd_gt_50_out = nd_gt_50
     
-    CCN50 = nd_gt_50_out + nd[1:,:,:].sum(axis=0) # add the larger modes
+    # CCN50 = nd_gt_50_out + nd[1:,:,:].sum(axis=0) # add the larger modes
     # add it into the aerosol array 
     CCN50 = xr.DataArray(CCN50,coords=[aer.time,aer.z1_hybrid_height],#,aer.lat,aer.lon],
                        dims=['time','z1_hybrid_height'],name='CCN50')#,'lat','lon'
@@ -554,7 +554,7 @@ def ccn_calcs(aer):
    #else: # input variable is not a cube
     nd_gt_60_out = nd_gt_60
     
-    CCN60 = nd_gt_60_out + nd[1:,:,:].sum(axis=0) # add the larger modes
+    # CCN60 = nd_gt_60_out + nd[1:,:,:].sum(axis=0) # add the larger modes
     # add it into the aerosol array 
     CCN60 = xr.DataArray(CCN60,coords=[aer.time,aer.z1_hybrid_height],#,aer.lat,aer.lon],
                        dims=['time','z1_hybrid_height'],name='CCN60')#,'lat','lon'
