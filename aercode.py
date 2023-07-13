@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import xarray as xr
+import scipy
 
 # some constants
 Rd=287.05
@@ -63,12 +64,10 @@ def df_md(key, m_path, mod, dt):
         df = xr.open_mfdataset(m_df)
         shplat = key['lat'].loc[t]
         shplon = key['lon'].loc[t]
-        data = df.interp(lat=shplat, lon=shplon, lat_v=shplat, lon_u=shplon)
-        data = data.reset_coords(('lat','lon','lat_v','lon_u'))
+        data = df.interp(lat=shplat, lon=shplon)
+        data = data.reset_coords(('lat','lon'))
         data['lat'] = data.lat.expand_dims(dim='time')
-        data['lon'] = data.lon.expand_dims(dim='time')
-        data['lat_v'] = data.lat_v.expand_dims(dim='time')
-        data['lon_u'] = data.lon_u.expand_dims(dim='time')        
+        data['lon'] = data.lon.expand_dims(dim='time')     
         if t == key.index[0]:
             dftrack = data
         else:
@@ -406,7 +405,7 @@ def nt_calcs(aer):
    #if (type(nd_in) == iris.cube.Cube)):
 
    #else: # input variable is not a cube
-    nd_gt_10_out = nd_gt_10
+    N10 = nd_gt_10
     
     # N10 = nd_gt_10_out + nd[1:,:,:].sum(axis=0) # add the larger modes
     # add it into the aerosol array 
@@ -440,7 +439,7 @@ def nt_calcs(aer):
    #if (type(nd_in) == iris.cube.Cube)):
 
    #else: # input variable is not a cube
-    nd_gt_3_out = nd_gt_3
+    N3 = nd_gt_3
     
     # N3 = nd_gt_3_out + nd[1:,:,:].sum(axis=0) # add the larger modes
     # add it into the aerosol array 
@@ -504,7 +503,7 @@ def ccn_calcs(aer):
    #if (type(nd_in) == iris.cube.Cube)):
 
    #else: # input variable is not a cube
-    nd_gt_40_out = nd_gt_40
+    CCN40 = nd_gt_40
     
     # CCN40 = nd_gt_40_out + nd[1:,:,:].sum(axis=0) # add the larger modes
     # add it into the aerosol array 
@@ -528,7 +527,7 @@ def ccn_calcs(aer):
    #if (type(nd_in) == iris.cube.Cube)):
 
    #else: # input variable is not a cube
-    nd_gt_50_out = nd_gt_50
+    CCN50 = nd_gt_50
     
     # CCN50 = nd_gt_50_out + nd[1:,:,:].sum(axis=0) # add the larger modes
     # add it into the aerosol array 
@@ -552,7 +551,7 @@ def ccn_calcs(aer):
    #if (type(nd_in) == iris.cube.Cube)):
 
    #else: # input variable is not a cube
-    nd_gt_60_out = nd_gt_60
+    CCN60 = nd_gt_60
     
     # CCN60 = nd_gt_60_out + nd[1:,:,:].sum(axis=0) # add the larger modes
     # add it into the aerosol array 
